@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Together with our families, we invite you to the wedding of Abin &amp; Treesa — 28 November 2026, Kuravilangad.">
+<meta property="og:title" content="Abin &amp; Treesa — Wedding Invitation">
+<meta property="og:description" content="28 November 2026 · Kuravilangad">
+<meta property="og:image" content="assets/couple.jpg"><!-- change to absolute URL after deploying, e.g. https://yourdomain/assets/couple.jpg -->
+<title>Abin &amp; Treesa — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script src="confetti.browser.min.js"></script>
+<script>window.confetti||document.write('<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"><\/script>')</script>
+<link rel="stylesheet" href="style.css">
+</head><body class="lock">
+
+<!-- ===== Cover / Envelope screen (shown first, unlocks on "Open Invitation") ===== -->
+<div id="cover"><div class="env">
+  <p class="eyebrow">You are invited</p>
+  <h1 class="script" style="font-size:46px;margin:12px 0 0;color:var(--cream)">Abin &amp; Treesa</h1>
+  <div class="seal script">A&amp;T</div>
+  <p class="sm" style="font-style:italic">28 November 2026</p>
+  <button class="btn" style="background:var(--tan);color:var(--deep);border-color:var(--tan)" onclick="openInv()">Open Invitation</button>
+</div></div>
+
+<!-- ===== Hero / Cover section: couple monogram, names, date and venue ===== -->
+<header class="hero-sec" id="top">
+  <div class="in">
+    <p class="eyebrow">The Wedding Of</p>
+    <div class="mono script" style="margin-top:12px">A<span>&amp;</span>T</div>
+    <div class="arch" role="img" aria-label="Abin and Treesa"></div>
+    <h2 class="names script">Abin &amp; Treesa</h2>
+    <p class="eyebrow" style="margin-top:10px">Saturday · 28 · 11 · 2026</p>
+    <p class="orn">✦ ✦ ✦</p>
+    <p class="sm" style="font-style:italic">Kuravilangad</p>
+  </div>
+</header>
+
+<!-- ===== Verse section: scripture quote ===== -->
+<section class="cr fade"><div class="in">
+  <p class="orn" style="margin-top:0">✠</p>
+  <p style="font-size:26px;font-style:italic;line-height:1.4">“What therefore God has joined together, let not man put asunder.”</p>
+  <p class="eyebrow" style="margin-top:10px">Mark 10:9</p>
+</div></section>
+
+<!-- ===== Invitation section: blessings, bride's family and groom's family ===== -->
+<section class="fade"><div class="in">
+  <p class="eyebrow">With the blessings of God</p>
+  <h2 style="margin:8px 0 4px">Two families, one joy</h2>
+  <p class="sm">Together with our beloved families, we joyfully invite you to witness and bless the beginning of our life together.</p>
+  <div class="card"><p class="lbl">The Bride’s Family</p>
+    <p class="big">Mr. Geigy George &amp; Mrs. Shiney Geigy</p><p class="sm">Rosevilla House (Thennatt)</p>
+    <p style="margin:14px 0 4px;font-style:italic">request the honour of your presence at the Holy Matrimony of their daughter</p>
+    <h2 class="script">Treesa Mary Issac</h2></div>
+  <p class="script" style="font-size:38px;color:var(--sage)">with</p>
+  <div class="card"><p class="lbl">The Groom’s Family</p>
+    <h2 class="script">Abin Antony</h2>
+    <p style="font-style:italic">Son of</p>
+    <p class="big">Mr. Antony MA &amp; Mrs. Pauly Antony</p><p class="sm">Mundakal House, Bangalore</p></div>
+</div></section>
+
+<!-- ===== Quote band: "Two hearts, one journey" ===== -->
+<div class="band"><p class="script fade">Two hearts, one journey, by the grace of God</p></div>
+
+<!-- ===== Wedding date & day's programme (timeline of events) ===== -->
+<section class="cr fade"><div class="in">
+  <p style="font-style:italic">Which by the grace of God will be solemnized</p>
+  <div class="card w" style="margin-top:22px"><p class="lbl">On Saturday</p>
+    <p class="script" style="font-size:52px;color:var(--cream);line-height:1.2">November 28</p>
+    <p class="eyebrow">Two Thousand Twenty-Six</p></div>
+  <h2 style="margin-top:30px">Day’s Programme</h2>
+  <div class="tl">
+    <div><b>11:00 am — Holy Matrimony</b><p class="sm">Major Archiepiscopal Marth Mariam Archdeacon Pilgrim Church, Kuravilangad</p></div>
+    <div><b>12:30 pm — Reception</b><p class="sm">Followed by the reception and a celebratory feast at Sehion Ottusala</p></div>
+  </div>
+  <p class="sm" style="margin-top:6px">Kindly be seated a little before the ceremony begins.</p>
+</div></section>
+
+<!-- ===== Save the Date: scratch card reveal + countdown timer ===== -->
+<section class="scratch-section fade"><div class="in">
+  <p class="eyebrow">Save the Date</p>
+  <h2 style="margin:6px 0">Scratch to Reveal</h2>
+  <p class="sm">Scratch the card to unveil the day and begin the countdown</p>
+  <div class="sc" id="sc">
+    <p class="eyebrow" style="color:var(--cream)">We are getting married on</p>
+    <p class="script" style="font-size:46px;color:var(--tan);line-height:1.3">28 Nov 2026</p>
+    <div id="cd"></div>
+    <canvas id="cv"></canvas>
+  </div>
+</div></section>
+
+<!-- ===== Location section: ceremony and reception venues with map links ===== -->
+<section id="location" class="fade"><div class="in">
+  <p class="eyebrow" style="color:var(--sage)">Find us</p>
+  <h2>Location</h2>
+  <div class="card"><p class="lbl">Ceremony · 11:00 am</p><p class="big">Marth Mariam Archdeacon Pilgrim Church</p><p class="sm">Kuravilangad</p>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Marth+Mariam+Archdeacon+Pilgrim+Church+Kuravilangad">Open in Maps</a></div>
+  <div class="card"><p class="lbl">Reception · 12:30 pm</p><p class="big">Sehion Ottusala</p><p class="sm">Kuravilangad</p>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sehion+Ottusala+Kuravilangad">Open in Maps</a></div>
+</div></section>
+
+<!-- ===== RSVP section: reply form ===== -->
+<section class="cr fade" id="rsvp"><div class="in">
+  <p class="eyebrow">Kindly reply</p>
+  <h2>RSVP</h2>
+  <p class="sm">Your presence will make our day complete</p>
+  <div class="card"><form id="f">
+    <label for="n">Your name</label><input id="n" required placeholder="Enter your full name">
+    <label for="a">Will you attend?</label><select id="a"><option value="Joyfully accept">Joyfully accept</option><option value="Regretfully decline">Regretfully decline</option></select>
+    <label for="g">Number of guests</label><input id="g" type="number" min="1" max="10" value="1">
+    <label for="m">Message (optional)</label><textarea id="m" rows="3" placeholder="Leave a blessing or note for the couple"></textarea>
+    <div style="text-align:center">
+      <button class="btn" type="submit">Submit RSVP</button>
+      <p id="rsvp-status" class="sm" style="margin-top:14px;display:none;font-weight:600"></p>
+    </div>
+  </form></div>
+</div></section>
+
+<!-- ===== Thank You section: closing note and best wishes ===== -->
+<section class="dk fade" style="padding:84px 20px"><div class="in">
+  <p class="orn" style="margin-top:0">✦ ✦ ✦</p>
+  <h2 style="font-size:48px">Thank You</h2>
+  <p style="font-style:italic;margin:10px 0">Your presence, love and prayers will make our day truly blessed.</p>
+  <p class="eyebrow" style="margin-top:34px">With Best Wishes from</p>
+  <p class="big" style="color:var(--cream)">Anish · Gifty · Anoop · Emil</p>
+  <p class="script" style="font-size:34px;color:var(--tan);margin-top:26px">Abin &amp; Treesa</p>
+</div></section>
+
+<!-- ===== Promo dialog: "Want your own?" invitation-services modal ===== -->
+<!-- <button class="badge" onclick="d.showModal()">Want your own?</button> -->
+<dialog id="d"><h3 class="script" style="font-size:30px;color:var(--wine);font-weight:400">Want your own invitation?</h3>
+  <p class="sm">Beautiful wedding invitation websites, made for you.</p>
+  <a class="btn" target="_blank" rel="noopener" href="https://wa.me/919207119149">WhatsApp</a><br>
+  <a class="btn alt" target="_blank" rel="noopener" href="https://invitation.octenix.in">See portfolio</a><br>
+  <button class="btn alt" style="border:0;font-size:13px" onclick="d.close()">Close</button></dialog>
+
+<script src="script.js"></script>
+</body></html>
