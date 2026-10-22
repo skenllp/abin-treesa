@@ -4,10 +4,118 @@ function $(i) {
   return document.getElementById(i);
 }
 
+// Background Music Engine
+var bgMusic = $("bg-music");
+var musicToggle = $("music-toggle");
+var wasPlayingBeforeHidden = false;
+var userManuallyPaused = false;
+var hasOpened = false;
+
+function updateMusicUI(playing) {
+  if (!musicToggle) return;
+  var playIcon = musicToggle.querySelector(".music-icon-play");
+  var pauseIcon = musicToggle.querySelector(".music-icon-pause");
+  if (playing) {
+    musicToggle.classList.add("playing");
+    musicToggle.setAttribute("aria-label", "Pause background music");
+    musicToggle.setAttribute("title", "Pause music");
+    if (playIcon) playIcon.style.display = "block";
+    if (pauseIcon) pauseIcon.style.display = "none";
+  } else {
+    musicToggle.classList.remove("playing");
+    musicToggle.setAttribute("aria-label", "Play background music");
+    musicToggle.setAttribute("title", "Play music");
+    if (playIcon) playIcon.style.display = "none";
+    if (pauseIcon) pauseIcon.style.display = "block";
+  }
+}
+
+function startMusic() {
+  if (!bgMusic) return;
+  if (musicToggle) {
+    musicToggle.style.display = "flex";
+  }
+  bgMusic.volume = 0.75;
+  var promise = bgMusic.play();
+  if (promise !== undefined) {
+    promise
+      .then(function () {
+        updateMusicUI(true);
+      })
+      .catch(function (err) {
+        console.warn("Background music play prevented or pending interaction:", err);
+        updateMusicUI(false);
+      });
+  }
+}
+
+function pauseMusic() {
+  if (!bgMusic) return;
+  bgMusic.pause();
+  updateMusicUI(false);
+}
+
+function toggleMusic() {
+  if (!bgMusic) return;
+  if (bgMusic.paused) {
+    userManuallyPaused = false;
+    startMusic();
+  } else {
+    userManuallyPaused = true;
+    pauseMusic();
+  }
+}
+
+if (musicToggle) {
+  musicToggle.addEventListener("click", toggleMusic);
+}
+
+if (bgMusic) {
+  bgMusic.addEventListener("play", function () {
+    updateMusicUI(true);
+  });
+  bgMusic.addEventListener("pause", function () {
+    updateMusicUI(false);
+  });
+}
+
+// Stop / pause audio when the tab or browser is closed, hidden, or minimized
+document.addEventListener("visibilitychange", function () {
+  if (!bgMusic) return;
+  if (document.hidden) {
+    // When the browser window is minimized or tab is hidden, stop/pause audio
+    if (!bgMusic.paused) {
+      wasPlayingBeforeHidden = true;
+      pauseMusic();
+    }
+  } else {
+    // When tab/browser is restored, resume playing if it was playing before minimize and wasn't manually paused
+    if (hasOpened && wasPlayingBeforeHidden && !userManuallyPaused) {
+      wasPlayingBeforeHidden = false;
+      startMusic();
+    }
+  }
+});
+
+// Stop audio on tab/browser close or navigation
+window.addEventListener("pagehide", function () {
+  if (bgMusic && !bgMusic.paused) {
+    pauseMusic();
+  }
+});
+
+window.addEventListener("beforeunload", function () {
+  if (bgMusic && !bgMusic.paused) {
+    pauseMusic();
+  }
+});
+
 function openInv() {
+  hasOpened = true;
   var cover = $("cover");
   if (cover) cover.classList.add("open");
   document.body.classList.remove("lock");
+  startMusic();
   setTimeout(function () {
     if (cover) cover.style.display = "none";
     initScratch();

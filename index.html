@@ -34,8 +34,8 @@
     <div class="arch" role="img" aria-label="Abin and Treesa"></div>
     <h2 class="names script">Abin &amp; Treesa</h2>
     <p class="eyebrow" style="margin-top:10px">Saturday · 28 · 11 · 2026</p>
+    <p class="sm" style="font-style:italic;font-size:21px;margin-top:4px">Kuravilangad</p>
     <p class="orn">✦ ✦ ✦</p>
-    <p class="sm" style="font-style:italic">Kuravilangad</p>
   </div>
 </header>
 
@@ -65,20 +65,6 @@
 <!-- ===== Quote band: "Two hearts, one journey" ===== -->
 <div class="band"><p class="script fade">Two hearts, one journey, by the grace of God</p></div>
 
-<!-- ===== Wedding date & day's programme (timeline of events) ===== -->
-<section class="cr fade"><div class="in">
-  <p style="font-style:italic">Which by the grace of God will be solemnized</p>
-  <div class="card w" style="margin-top:22px"><p class="lbl">On Saturday</p>
-    <p class="script" style="font-size:52px;color:var(--cream);line-height:1.2">November 28</p>
-    <p class="eyebrow">Two Thousand Twenty-Six</p></div>
-  <h2 style="margin-top:30px">Day’s Programme</h2>
-  <div class="tl">
-    <div><b>11:00 am — Holy Matrimony</b><p class="sm">Major Archiepiscopal Marth Mariam Archdeacon Pilgrim Church, Kuravilangad</p></div>
-    <div><b>12:30 pm — Reception</b><p class="sm">Followed by the reception and a celebratory feast at Sehion Ottusala</p></div>
-  </div>
-  <p class="sm" style="margin-top:6px">Kindly be seated a little before the ceremony begins.</p>
-</div></section>
-
 <!-- ===== Save the Date: scratch card reveal + countdown timer ===== -->
 <section class="scratch-section fade"><div class="in">
   <p class="eyebrow">Save the Date</p>
@@ -92,13 +78,19 @@
   </div>
 </div></section>
 
-<!-- ===== Location section: ceremony and reception venues with map links ===== -->
+<!-- ===== Programme & Location section: ceremony and reception venues with map links ===== -->
 <section id="location" class="fade"><div class="in">
-  <p class="eyebrow" style="color:var(--sage)">Find us</p>
-  <h2>Location</h2>
-  <div class="card"><p class="lbl">Ceremony · 11:00 am</p><p class="big">Marth Mariam Archdeacon Pilgrim Church</p><p class="sm">Kuravilangad</p>
+  <p class="eyebrow" style="color:var(--sage)">Day’s Programme &amp; Venue</p>
+  <h2>When &amp; Where</h2>
+  <div class="card"><p class="lbl">Holy Matrimony · 11:00 am</p>
+    <p class="big">Marth Mariam Archdeacon Pilgrim Church</p>
+    <p class="sm">Kuravilangad</p>
+    <p class="sm" style="margin:8px 0 2px;font-style:italic">Kindly be seated a little before the ceremony begins</p>
     <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Marth+Mariam+Archdeacon+Pilgrim+Church+Kuravilangad">Open in Maps</a></div>
-  <div class="card"><p class="lbl">Reception · 12:30 pm</p><p class="big">Sehion Ottusala</p><p class="sm">Kuravilangad</p>
+  <div class="card"><p class="lbl">Reception &amp; Feast · 12:30 pm</p>
+    <p class="big">Sehion Ottusala</p>
+    <p class="sm">Kuravilangad</p>
+    <p class="sm" style="margin:8px 0 2px;font-style:italic">Followed by the reception and celebratory feast</p>
     <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sehion+Ottusala+Kuravilangad">Open in Maps</a></div>
 </div></section>
 
@@ -136,6 +128,18 @@
   <a class="btn" target="_blank" rel="noopener" href="https://wa.me/919207119149">WhatsApp</a><br>
   <a class="btn alt" target="_blank" rel="noopener" href="https://invitation.octenix.in">See portfolio</a><br>
   <button class="btn alt" style="border:0;font-size:13px" onclick="d.close()">Close</button></dialog>
+
+<!-- Floating music toggle button -->
+<button id="music-toggle" class="music-btn" aria-label="Toggle background music" style="display:none">
+  <svg class="music-icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+  </svg>
+  <svg class="music-icon-pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none">
+    <path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l4.73 4.73c-.24.08-.48.15-.73.2v2.04c.82-.16 1.58-.49 2.24-.96l2.46 2.46L21 20.73 4.27 3zM14 7h4V3h-6v5.18l2 2V7z"/>
+  </svg>
+</button>
+
+<audio id="bg-music" src="music.mp3" preload="auto" loop playsinline></audio>
 
 <script src="script.js"></script>
 </body></html>

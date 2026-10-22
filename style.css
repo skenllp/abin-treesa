@@ -55,7 +55,7 @@ section {
 }
 
 .cr {
-  background: var(--cream);
+  background: transparent;
 }
 
 .eyebrow {
@@ -172,7 +172,9 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 30%, #6e0f25, #2e0a13);
+  background:
+    linear-gradient(rgba(46, 10, 19, .55), rgba(46, 10, 19, .78)),
+    url("assets/couple.jpg") center/cover no-repeat;
   color: var(--cream);
   transition: transform 1.2s cubic-bezier(.7, 0, .2, 1);
 }
@@ -187,7 +189,9 @@ h2 {
   border: 1px solid var(--tan);
   outline: 1px solid var(--tan);
   outline-offset: 8px;
-  background: rgba(0, 0, 0, .18);
+  background: rgba(46, 10, 19, .35);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .seal {
@@ -282,11 +286,11 @@ h2 {
 /* photo band */
 .band {
   height: 340px;
-  background: linear-gradient(rgba(74, 20, 32, .45), rgba(74, 20, 32, .65)), var(--ph) center 30%/cover fixed;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--cream);
+  color: var(--wine);
   padding: 20px;
 }
 
@@ -329,14 +333,24 @@ h2 {
 
 /* scratch */
 .scratch-section {
-  background: url(assets/bg1.png) center/cover no-repeat;
+  background: url(assets/bg1.png) center center / cover no-repeat;
   color: var(--deep);
   position: relative;
-  min-height: 1672px;
+  min-height: 2000px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
+}
+
+/* Mobile: match the section height to a slightly taller 941:2000 ratio
+   so the image sits a little taller while still filling the section. */
+@media (max-width: 640px) {
+  .scratch-section {
+    aspect-ratio: 941 / 2000;
+    min-height: 0;
+    padding: 40px 20px;
+  }
 }
 
 .scratch-section .in {
@@ -504,4 +518,54 @@ dialog::backdrop {
   #cover {
     transition: none;
   }
+  .music-btn.playing .music-icon-play {
+    animation: none;
+  }
 }
+
+/* Floating background music toggle button */
+.music-btn {
+  position: fixed;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(251, 247, 236, 0.92);
+  color: var(--wine);
+  border: 1px solid var(--tan);
+  box-shadow: 0 4px 16px rgba(74, 20, 32, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 45;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  background: var(--cream);
+  box-shadow: 0 6px 20px rgba(74, 20, 32, 0.32);
+}
+
+.music-btn:active {
+  transform: scale(0.95);
+}
+
+.music-btn.playing .music-icon-play {
+  animation: music-note-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes music-note-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
