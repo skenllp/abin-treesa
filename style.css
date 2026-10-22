@@ -260,11 +260,12 @@ h2 {
   width: min(76vw, 290px);
   aspect-ratio: 3/4;
   margin: 26px auto;
-  border-radius: 999px 999px 6px 6px;
+  border-radius: 4px;
   border: 2px solid var(--tan);
   outline: 1px solid var(--tan);
   outline-offset: 8px;
   background: var(--ph) center/cover;
+  box-shadow: 0 10px 30px rgba(74, 20, 32, .15);
 }
 
 .petal {
