@@ -301,6 +301,24 @@ h2 {
   line-height: 1.3;
 }
 
+/* couple photo */
+.photo-sec {
+  padding: 0 20px 48px;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 2px solid var(--tan);
+  outline: 1px solid var(--tan);
+  outline-offset: 6px;
+  box-shadow: 0 12px 36px rgba(74, 20, 32, .2);
+}
+
 /* timeline */
 .tl {
   position: relative;
